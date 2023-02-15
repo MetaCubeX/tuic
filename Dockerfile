@@ -29,8 +29,8 @@ RUN case "$TARGETARCH" in \
     && echo "CC=$CC" \
     && rustup override set nightly \
     && rustup target add "$RUST_TARGET" \
-    && RUSTFLAGS="-C linker=$CC" CC=$CC cargo build --target "$RUST_TARGET" --release -p tuic-server \
-    && mv target/$RUST_TARGET/release/tuic* target/release/
+    && RUSTFLAGS="-C linker=$CC" CC=$CC cargo build --target "$RUST_TARGET" --release \
+    && mv target/$RUST_TARGET/release/tuic-server target/release/
 
 FROM alpine:3.16 AS tuic-server
 
